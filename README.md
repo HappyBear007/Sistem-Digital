@@ -4,10 +4,10 @@ Happy Bear is a team created to complete the "System Digital" coursework. Consis
 
 # Member
 
-1. <a href="hhttps://www.instagram.com/yusufkata03/"> Yusuf Fataa Muhana</a> - 2110024 
-2. <a href="hhttps://www.instagram.com/yusufkata03/">Belinda Dwi Sukma P</a> - 2110218
-3. <a href="hhttps://www.instagram.com/yusufkata03/">Ihsan Setiyadi</a> - 2110024
-4. <a href="hhttps://www.instagram.com/yusufkata03/">Ambarsari</a> - 2110038
+1. <a href="https://www.instagram.com/yusufkata03/"> Yusuf Fataa Muhana </a> - 2110024 
+2. <a href="https://www.instagram.com/yusufkata03/">Belinda Dwi Sukma P </a> - 2110218
+3. <a href="https://www.instagram.com/yusufkata03/">Ihsan Setiyadi </a> - 2110024
+4. <a href="https://www.instagram.com/yusufkata03/">Ambarsari </a> - 2110038
 
 # Dosen Pengampu
 
