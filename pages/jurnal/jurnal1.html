@@ -117,13 +117,127 @@
             </nav>
 
             <div class="section text-center">
-                <h3 class="text-uppercase" alt="hp-003">Sistem Bilangan</h3>
-                <span>Jurnal 1</span> <br>
+                <h3 class="text-uppercase" alt="hp-003">PERANCANGAN JAM DIGITAL DAN SISTEM BEL OTOMATIS PADA SEKOLAH DENGAN TEKNIK COUNTER BERBASIS MIKROKONTROLER</h3>
+                <span>Review Jurnal 1</span> <br>
                 <span class="fst-italic">Oleh Kelompok Happy Bear</span>
             </div>
 
             <div class="col-lg-12 col-sm-12 text-dark mt-5">
-                
+               <p class="justify">
+                Perancangan jam digital dan system bel otomatis ini dibuat karena di Indonesia umumnya masih menggunakan bel manual, yaitu bel berbunyi ketika tombol bel tersebut ditekan oleh operator untuk pengoperasiannya dan karna faktor manusiawi terkadang bel berbunyi tidak tepat waktu sehingga proses pembelajaran tidak efisien.<br>
+                Untuk menghindari hal tersebut maka dengan pembuatan sistem jam digital dan bel otomatis akan membantu meringankan pekerjaan operator atau petugas piket sekolah dan peroses pembelajaran lebih efisien.<br>
+                <br>
+                METODE PENELITIAN<br>
+                <b>Counter (Pencacah)</b><br>
+                Fungsi pencacah merupakan salah satu pencacahan kejadian atau periode waktu atau menempatkan kejadian secara berurutan.<br>
+                Berikut diagram logika pencacah dan urutan perhitungan pencacah naik atau counter up dalam model pencacah sinkron:<br>
+                <img src="../../assets/img/materi/Jurnal/1-diagram-logika-pencacah-naik.png" height="300" width="550"><br>
+                Berikut diagram logika pencacah dan urutan perhitungan pencacah bawah atau counter down dalam model pencacah sinkron:<br>
+                <img src="../../assets/img/materi/Jurnal/1-diagram-logika-pencacah-bawah.png" height="300" width="550"><br>
+                <br>
+
+                Perhitungan Bilangan Coounter Up<br>
+                <br>
+                Wx = U incr Wx atau Xdet = Wx ++<br>
+                Wx > Max x = Wx<br>
+                Wx < 0 = 0<br>
+                simpan :<br>
+                Detik = Wx<br>
+                Dimana :<br>
+                Detik = data EPPROM<br>
+                W = Penampungan data sementara<br>
+                x = Perhitungan data tujuan (detik, menit, jam, dst)<br> 
+                U = Up (Data input digital sebagai count up)<br>
+                incr = Penjumlahan 1 atau 1 ++<br>
+                <br>
+                Perhitungan Bilangan Counter Down<br>
+                <br>
+                Wx = D decr Wx atau Xdet = Wx - -<br>
+                simpan :<br>
+                Detik = Wx<br>
+                Wx > Max x = Wx<br> 
+                Wx < 0 = 0<br>
+                Dimana :<br>
+                Detik = data EPPROM<br>
+                W = Penampungan data sementara<br>
+                x = Pengurangan data tujuan (detik, menit, jam, dst)<br> 
+                D = Down (Data input digital sebagai count down)<br> 
+                decr = Pengurangan 1 atau 1 - -<br>
+
+                <br>
+                Berikut ini analisa perhitungan data counter up pada jam digital dan sistem bel otomatis :<br>
+                <br>
+                <b>a. Perhitungan data detik</b><br>
+                Detik pada jam merupakan hitungan perdetaknya clock yang berjalan di dalam mikrokontroler. detik pada jam memiliki data konstanta 1 sampai 60 yang berjalan setiap saat,dan setelah tercapai di angka 60, maka akan kembali ke angka awal yaitu 1, proses ini disebut dalam 1 periode perputaran detik dan akan melanjutkan ke perhitungan menit.<br>
+                <br>
+                <b>b. Perhitungan data menit</b><br>
+                Menit merupakan perhitungan setelah berakhirnya putaran perhitungan detik dalam 1 periode (1 sampai 60 detik). Tiap periode detik berjalan, maka hitungan menit bertambah 1 dan seterusnya. Menit pada jam memiliki data konstanta 1 sampai 60, dan setelah tercapai di angka 60, maka akan kembali ke awal yaitu 1. Proses ini disebut dalam 1 periode perputaran menit dan akan melanjutkan ke perhitungan jam.<br>
+                <br>
+                <b>c. Perhitungan data jam</b><br>
+                Data jam merupakan perhitungan setelah berakhirnya putaran perhitungan menit dalam 1 periode ( 1 sampai 60 menit). Tiap periode menit berjalan, maka hitungan jam bertambah 1 dan seterusnya. Data angka pada jam memiliki konstanta 1 sampai 24, dan setelah tercapai di angka 24, maka akan kembali ke awal yaitu 1. Proses ini disebut dalam 1 periode perputaran jam dan akan melanjutkan ke perhitungan tanggal.<br>
+                <br>
+                <b>d. Perhitungan data tanggal</b><br>
+                Data tanggal merupakan perhitungan setelah berakhirnya putaran perhitungan jam dalam 1 periode (1 sampai 24 jam). Tiap periode jam berjalan, maka hitungan tanggal bertambah 1 dan seterusnya. data angka pada tanggal berbeda beda tiap bulannya, sesuai dengan kalender pemerintah yang diterbitkan. Sistem yang tertanam pada IC RTC (Real Time Clock) DS3231 tersimpan data tanggal yang berlaku sampai dengan tahun 2100, data tersebut dikutip dari datasheet RTC-DS3231. Setelah proses perputaran 1 periode tanggal, kemudian akan melanjutkan ke perhitungan bulan.<br>
+                <b>e. Perhitungan data bulan</b><br>
+                Data bulan merupakan perhitungan setelah berakhirnya putaran perhitungan tanggal dalam 1 periode. Tiap periode tanggal berjalan, maka hitungan bulan bertambah 1 dan seterusnya, data angka pada bulan memiliki konstanta 1 sampai 12, dan setelah tercapai diangka 12, maka akan kembali ke awal yaitu 1. Proses ini disebut dalam 1 periode perputaran bulan dan akan melanjutkan ke perhitungan tahun.<br>
+                <b>f. Perhitungan data tahun</b>
+                Data tahun merupakan perhitungan setelah berakhirnya putaran perhitungan bulan dalam 1 periode. Tiap periode bulan berjalan, maka hitungan tahun bertambah 1 dan seterusnya, data angka pada tahun relatif, karena usia bumi tidak ada yang dapat menentukan ketetapannya.<br>
+                <br>
+
+                ANALISA DAN HASIL<br>
+                <img src="../../assets/img/materi/Jurnal/1-analisa-dan-hasil.png"><br>
+                Berikut ini penjelasan dari algoritma sistem perancangan alat yang akan dibuat :<br>
+                1. Proses mengaktifkan sistem : yaitu pertama kali sistem atau alat dijalankan pada saat catu daya dihubungkan.<br>
+                2. Pembacaan informasi tanggal dan waktu : sistem akan menerima data dari RTC sebagai data acuan waktu nyata untuk menampilkan jam digital dan mengendalikan bel secara otomatis.<br>
+                3. Koneksi mikrokontroler dengan komputer : yaitu saat komputer dihubungkan dengan modul USB to TTL menggunakan komunikasi serial untuk pengiriman data.<br>
+                4. Menerima data dari komputer : yaitu data yang diterima berupa satu baris data-data yang memuat informasi data jam digital dan penjadwalan bel.<br>
+                5. Simpan ke EEPROM mikrokontroler : yaitu semua data yang telah di konfigurasi dan dilakukan penyimpanan ke memori internal mikrokontroler agar saat sistem mati data tidak akan hilang.<br>
+                6. Sistem bekerja : yaitu proses terakhir untuk menampilkan hasil yang telah dilakukan.<br>
+                <br>
+                <img src="../../assets/img/materi/Jurnal/1-blok-diagram.png"><br>
+                <b>Blok Diagram</b><br>
+                menjelaskan konfigurasi sistem maupun input/output sistem dimana input sistem adalah sebuah tampilan visual basic (VB) yang dimasukkan oleh user pada komputer, RTC (Real Time Clock) sebagai sumber waktu nyata dan push button sebagai on off bel ketika tidak digunakan.<br>
+                Berikut penjelasan dari blok input, proses, dan output yaitu:<br>
+                <br>
+                1. Blok Input<br>
+                <i>a. Aplikasi Pengatur Jam dan jadwal Bel</i><br>
+                Aplikasi pengaturan jam dan jadwal bel pada sekolah merupakan bagian dari input data waktu nyata dan jadwal bel yang kemudian akan dikirim melalui koneksi USB to TTL dari komputer ke mikrokontroler.<br>
+                <i>b. RTC (Real Time Clock)</i><br>
+                RTC digunakan sebagai input waktu nyata pada sistem, dan akan di proses sesuai kondisi sistem yang telah di program.<br>
+                <i>c. Push Button</i><br>
+                Push button digunakan sebagai data input untuk memberi nilai yang akan di eksekusi sistem sebagai pengatur bel aktif atau tidak aktif.<br>
+                <br>
+                2. Blok Proses<br>
+                Pada blok proses yaitu mikrokontroler akan memproses input dari aplikasi pembayaran uang sekolah untuk menghasilkan output berupa tampilan jam pada seven segment, tampilan pengaturan pada LCD dan sirine aktif yang dibunyikan oleh buzzer.<br>
+                <br>
+                3. Blok Output<br>
+                <i>a. Seven Segment</i><br>
+                Seven Segment berfungsi sebagai penampil jam digital dengan waktu nyata.<br>
+                <i>b. LCD (liquid Crystal Display</i><br>
+                LCD berfungsi sebagai penampil pengaturan dan info pada sistem.<br>
+                <i>c. Buzzer</i><br>
+                Buzzer berfungsi sebagai suara dalam bentuk sirine.<br>
+                <br>
+                4. Catu Daya<br>
+                Catu daya terhubung pada semua komponen. Dimana sumber catu daya menggunakan adaptor listrik AC 220V untuk selanjutnya regulator pada adaptor akan merubah tegangan listrik 220V AC menjadi 5V DC untuk disalurkan ke semua perangkat keras pada sistem.<br>
+                <img src="../../assets/img/materi/Jurnal/1-perancangan.png"><br>
+                Gambar diatas merupakan perancangan jam digital dan sistem bel otomatis pada saat implementasi. Pada gambar ini terlihat beberapa komponen. Berikut ini daftar komponen yang terlihat pada gambar :<br>
+                1. Mikrokontroler ATMgea32<br>
+                2. LCD 20x4<br>
+                3. RTC (Real Time Clock)<br>
+                4. Seven Segment<br>
+                5. Buzzer<br>
+                6. Push Button<br>
+                7. LED<br>
+                <img src="../../assets/img/materi/Jurnal/1-rangkaian-keseluruhan.png"><br>
+                Gambar diatas merupakan rangkaian keseluruhan sistem jam digital dan bel sekolah menggunakan teknik counter pada implementasi pencacahan bilangannya, dan menggunakan komunikasi serial dari mikrokontroler ke komputer.<br>
+                <br>
+                <b>Kesimpulan</b><br>
+                1. Implementasi teknik counter pada pengoperasian pengaturan jadwal jam dan jadwal pembunyian bel dengan menggunakan model pencacahan naik dan pencacahan menurun yang mekanisme pengaturannya antara lain menambah nilai satu untuk count up dan mengurang nilai satu untuk count down.<br>
+                2. Pada sistem jam digital dan penjadwalan bel otomatis terdapat data waktu nyata (real) dari RTC (Real Time Clock) pada mikrokontroler sebagai sumber waktu yang digunakan untuk data jam digital dan penjadwalan bel dengan akurat dan presisi.<br>
+                3. Mikrokontroler memiliki sistem EEPROM atau sering disebut Read Only Memory yang berfungsi sebagai penyimpan data yang telah di program. Pengaturan penyimpanan semua data sistem jam digital dan penjadwalan bel pada Mikrokontroler tersimpan pada memori EEPROM dengan mekanisme setelah melakukan pengaturan pencacah lalu memprosesnya ke memori EEPROM dan tersimpan.<br>
+                4. Perancangan sistem software sebagai antar muka (interface) dikerjakan dengan menggunakan pemrograman berorientasi objek dengan pemrograman basic atau software visual basic serta komponen serial port untuk komunikasi PC ke mikrokontroler dan desain-desain tampilan antar muka untuk memudahkan dalam penggunaan pengaturan jam dan jadwal bel otomatis sedemikian rupa.<br>
+               </p> 
             </div>
 
             <div class="d-grid gap-2 d-md-block d-md-flex justify-content-md-end">
